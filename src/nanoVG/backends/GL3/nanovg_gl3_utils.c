@@ -15,11 +15,12 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 //
-#include "nanovg_gl3_utils.h"
-#include "nanovg_gl3.h"
+#include "nanoVG/nanovg_gl3_utils.h"
+#include "nanoVG/nanovg_gl3.h"
 #include "nanoVG/nanovg.h"
 
-#include "GLAD/glad.h"
+
+#include "GL/glew.h"
 
 #include <stdlib.h>
 #include <stdio.h>

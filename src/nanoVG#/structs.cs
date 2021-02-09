@@ -113,7 +113,7 @@ namespace NanoVG
 	public unsafe abstract class NVGParameters
 	{
 		public abstract int RenderCreate(IntPtr UPtr);
-		public abstract int RenderCreateTexture(IntPtr UPtr, int Type, int W, int H, NVGImageFlags ImageFlags, IntPtr Data);
+		public abstract int RenderCreateTexture(IntPtr UPtr, int Type, int W, int H, ImageFlags ImageFlags, IntPtr Data);
 		public abstract int RenderDeleteTexture(IntPtr UPtr, int Image);
 		public abstract int RenderUpdateTexture(IntPtr UPtr, int Image, int X, int Y, int W, int H, IntPtr Data);
 		public abstract int RenderGetTextureSize(IntPtr UPtr, int Image, out int W, out int H);

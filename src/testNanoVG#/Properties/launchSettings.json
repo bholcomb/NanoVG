@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "testNanoVG#": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\source\\NanoVG\\bin"
+    }
+  }
+}

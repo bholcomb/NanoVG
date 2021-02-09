@@ -11,9 +11,8 @@ namespace NanoVG
    public static unsafe partial class NVG
    {
       internal const string FuncPrefix = "nvg";
-      internal const string LibName = "nanovg";
+      internal const string LibName = "nanoVG.dll";
       internal const CallingConvention CConv = CallingConvention.Cdecl;
-
 
       #region Frame functions
       //
@@ -514,40 +513,40 @@ namespace NanoVG
 
       // Creates font by loading it from the disk from specified file name.
       // Returns handle to the font.
-      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(CreateFont))]
-      public static extern int CreateFont(this NanoVGContext Ctx, byte[] name, byte[] filename);
+      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(CreateFont), CharSet = CharSet.Ansi)]
+      public static extern int CreateFont(this NanoVGContext Ctx, string name, string filename);
 
       // fontIndex specifies which font face to load from a .ttf/.ttc file.
-      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(CreateFontAtIndex))]
+      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(CreateFontAtIndex), CharSet = CharSet.Ansi)]
       public static extern int CreateFontAtIndex(this NanoVGContext Ctx, string name, string filename, int fontIndex);
 
       // Creates font by loading it from the specified memory chunk.
       // Returns handle to the font.
-      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(CreateFontMem))]
-      public static extern int CreateFontMem(this NanoVGContext Ctx, byte[] name, byte* data, int ndata, int freeData);
+      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(CreateFontMem), CharSet = CharSet.Ansi)]
+      public static extern int CreateFontMem(this NanoVGContext Ctx, string name, byte* data, int ndata, int freeData);
 
       // fontIndex specifies which font face to load from a .ttf/.ttc file.
-      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(CreateFontMemAtIndex))]
+      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(CreateFontMemAtIndex), CharSet = CharSet.Ansi)]
       public static extern int CreateFontMemAtIndex(this NanoVGContext Ctx, string name, IntPtr data, int ndata, int freeData, int fontIndex);
 
       // Finds a loaded font of specified name, and returns handle to it, or -1 if the font is not found.
-      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(FindFont))]
-      public static extern int FindFont(this NanoVGContext Ctx, byte[] name);
+      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(FindFont), CharSet = CharSet.Ansi)]
+      public static extern int FindFont(this NanoVGContext Ctx, string name);
 
       // Adds a fallback font by handle.
       [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(AddFallbackFontId))]
       public static extern int AddFallbackFontId(this NanoVGContext Ctx, int baseFont, int fallbackFont);
 
       // Adds a fallback font by name.
-      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(AddFallbackFont))]
-      public static extern int AddFallbackFont(this NanoVGContext Ctx, byte[] baseFont, byte[] fallbackFont);
+      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(AddFallbackFont), CharSet = CharSet.Ansi)]
+      public static extern int AddFallbackFont(this NanoVGContext Ctx, string baseFont, string fallbackFont);
 
       // Resets fallback fonts by handle.
       [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(ResetFallbackFontsId))]
       public static extern void ResetFallbackFontsId(this NanoVGContext Ctx, int baseFont);
 
       // Resets fallback fonts by name.
-      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(ResetFallbackFontsId))]
+      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(ResetFallbackFontsId), CharSet = CharSet.Ansi)]
       public static extern void ResetFallbackFonts(this NanoVGContext Ctx, string baseFont);
 
       // Sets the font size of current text style.
@@ -575,36 +574,36 @@ namespace NanoVG
       public static extern void FontFaceId(this NanoVGContext Ctx, int font);
 
       // Sets the font face based on specified id of current text style.
-      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(FontFace))]
-      public static extern void FontFace(this NanoVGContext Ctx, byte[] font);
+      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(FontFace), CharSet = CharSet.Ansi)]
+      public static extern void FontFace(this NanoVGContext Ctx, string font);
 
       // Draws text string at specified location. If end is specified only the sub-string up to the end is drawn.
-      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(Text))]
-      public static extern float Text(this NanoVGContext Ctx, float x, float y, byte[] Str, byte[] end);
+      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(Text), CharSet = CharSet.Ansi)]
+      public static extern float Text(this NanoVGContext Ctx, float x, float y, string Str, string end);
 
       // Draws multi-line text string at specified location wrapped at the specified width. If end is specified only the sub-string up to the end is drawn.
       // White space is stripped at the beginning of the rows, the text is split at word boundaries or when new-line characters are encountered.
       // Words longer than the max width are slit at nearest character (i.e. no hyphenation).
-      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(TextBox))]
-      public static extern void TextBox(this NanoVGContext Ctx, float x, float y, float breakRowWidth, byte[] Str, byte[] end);
+      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(TextBox), CharSet = CharSet.Ansi)]
+      public static extern void TextBox(this NanoVGContext Ctx, float x, float y, float breakRowWidth, string Str, string end);
 
       // Measures the specified text string. Parameter bounds should be a pointer to float[4],
       // if the bounding box of the text should be returned. The bounds value are [xmin,ymin, xmax,ymax]
       // Returns the horizontal advance of the measured text (i.e. where the next character should drawn).
       // Measured values are returned in local coordinate space.
-      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(TextBounds))]
-      public static extern float TextBounds(this NanoVGContext Ctx, float x, float y, byte[] Str, byte[] end, float* bounds);
+      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(TextBounds), CharSet = CharSet.Ansi)]
+      public static extern float TextBounds(this NanoVGContext Ctx, float x, float y, string Str, string end, float* bounds);
 
       // Measures the specified multi-text string. Parameter bounds should be a pointer to float[4],
       // if the bounding box of the text should be returned. The bounds value are [xmin,ymin, xmax,ymax]
       // Measured values are returned in local coordinate space.
-      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(TextBoxBounds))]
-      public static extern void TextBoxBounds(this NanoVGContext Ctx, float x, float y, float breakRowWidth, byte[] Str, byte[] end, float* bounds);
+      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(TextBoxBounds), CharSet = CharSet.Ansi)]
+      public static extern void TextBoxBounds(this NanoVGContext Ctx, float x, float y, float breakRowWidth, string Str, string end, float* bounds);
 
       // Calculates the glyph x positions of the specified text. If end is specified only the sub-string will be used.
       // Measured values are returned in local coordinate space.
-      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(TextGlyphPositions))]
-      public static extern int TextGlyphPositions(this NanoVGContext Ctx, float x, float y, byte[] Str, byte[] end, /* NVGglyphPosition* */ IntPtr positions, int maxPositions);
+      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(TextGlyphPositions), CharSet = CharSet.Ansi)]
+      public static extern int TextGlyphPositions(this NanoVGContext Ctx, float x, float y, string Str, string end, /* NVGglyphPosition* */ IntPtr positions, int maxPositions);
 
       // Returns the vertical metrics based on the current text style.
       // Measured values are returned in local coordinate space.
@@ -614,8 +613,8 @@ namespace NanoVG
       // Breaks the specified text into lines. If end is specified only the sub-string will be used.
       // White space is stripped at the beginning of the rows, the text is split at word boundaries or when new-line characters are encountered.
       // Words longer than the max width are slit at nearest character (i.e. no hyphenation).
-      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(TextBreakLines))]
-      public static extern int TextBreakLines(this NanoVGContext Ctx, byte[] Str, byte[] end, float breakRowWidth, /*NVGtextRow* */ IntPtr rows, int maxRows);
+      [DllImport(LibName, CallingConvention = CConv, EntryPoint = FuncPrefix + nameof(TextBreakLines), CharSet = CharSet.Ansi)]
+      public static extern int TextBreakLines(this NanoVGContext Ctx, string Str, string end, float breakRowWidth, /*NVGtextRow* */ IntPtr rows, int maxRows);
       #endregion
    }
 }

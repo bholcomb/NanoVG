@@ -16,8 +16,7 @@
 // 3. This notice may not be removed or altered from any source distribution.
 //
 
-#include "nanovg_gl3.h"
-
+#include "nanoVG/nanovg_gl3.h"
 #include "nanoVG/nanovg.h"
 
 #include <stdlib.h>
@@ -25,7 +24,7 @@
 #include <string.h>
 #include <math.h>
 
-#include "GLAD/glad.h" //opengl 3.0 bindings
+#include "GL/glew.h"
 
 
 enum GLNVGuniformLoc {
@@ -1257,6 +1256,8 @@ static void glnvg__renderDelete(void* uptr)
 
 NVGcontext* nvgCreateGL3(int flags)
 {
+	glewInit();
+
 	NVGparams params;
 	NVGcontext* ctx = NULL;
 	GLNVGcontext* gl = (GLNVGcontext*)malloc(sizeof(GLNVGcontext));

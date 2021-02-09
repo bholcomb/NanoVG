@@ -81,5 +81,6 @@ namespace NanoVG
       FLIPY = 1 << 3,       // Flips (inverses) image in Y direction when rendered.
       PREMULTIPLIED = 1 << 4,       // Image data has premultiplied alpha.
       NEAREST = 1 << 5,     // Image interpolation is Nearest instead Linear
+      NODELETE = 1 << 16,	// Do not delete GL texture handle.
    }
 }

@@ -39,10 +39,10 @@ project "testNanoVG"
 	language "C++"
 	location "testNanoVG"
 	targetdir("../bin")
-	files{"../src/testNanoVG/*.cxx"}
-   includedirs {"../include", "../3rdParty/include"}
+	files{"../src/testNanoVG/*.cxx", "../src/testNanoVG/*.c", "../src/testNanoVG/*.h"}
+   includedirs {"../include", "../3rdParty/include", "../src/nanoVG/backends/GL3/"}
    libdirs {"../lib", "../3rdParty/lib"}
-	links {"nanoVG", "glfw3", "OpenGL32"}
+	links {"nanoVG", "glfw3", "glew32", "OpenGL32", "nanoVG-GL3", "OpenGL32"}
 	systemversion("10.0")
    
 if _OPTIONS['with-gl3'] then
@@ -51,12 +51,13 @@ if _OPTIONS['with-gl3'] then
       language "C++"
       location "nanoVG-GL3"
       targetdir("../lib")
-      includedirs {"../include",  "../src/nanoVG/backends/gl3" }
+      includedirs {"../include",  "../3rdParty/include", "../src/nanoVG/backends/gl3" }
+      libdirs {"../lib", "../3rdParty/lib"}
       defines{"NVGL3_EXPORTS", "_CRT_SECURE_NO_WARNINGS"}
-      files{"../src/nanoVG/backends/GL3/**.c", "../src/nanoVG/backends/GL3/**.h"}
-      links {"nanoVG"}
+      files{"../src/nanoVG/backends/GL3/*.c", "../include/nanoVG/nanovg_gl3*.h"}
+      links {"nanoVG", "glew32", "OpenGL32"}
       vpaths { 
-         ["Headers"] = "../include/nanoVG/backends/GL3/*.h", 
+         ["Headers"] = "../include/nanoVG/nanovg_gl3*.h", 
          ["Source"] = "../src/nanoVG/backends/GL3/*.c"
       }
       systemversion("10.0")
